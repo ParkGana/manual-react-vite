@@ -1,1 +1,1 @@
-# manual-react-vite
+# MANUAL - REACT (VITE)
