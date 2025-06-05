@@ -1,5 +1,88 @@
 import { css } from 'styled-components';
 
+const typography = {
+  title2XL: css`
+    font-size: 40px;
+    line-height: 135%;
+    font-weight: 700;
+  `,
+  titleXL: css`
+    font-size: 24px;
+    line-height: 135%;
+    font-weight: 700;
+  `,
+  titleL: css`
+    font-size: 20px;
+    line-height: 135%;
+    font-weight: 700;
+  `,
+  titleM: css`
+    font-size: 16px;
+    line-height: 135%;
+    font-weight: 700;
+  `,
+  titleS: css`
+    font-size: 12px;
+    line-height: 135%;
+    font-weight: 700;
+  `,
+  bodyXL: css`
+    font-size: 24px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  bodyL: css`
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  bodyM: css`
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  bodyS: css`
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  labelL: css`
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: 700;
+  `,
+  labelM: css`
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 700;
+  `,
+  labelS: css`
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 700;
+  `,
+  labelXS: css`
+    font-size: 10px;
+    line-height: 150%;
+    font-weight: 700;
+  `,
+  captionM: css`
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  captionS: css`
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 500;
+  `,
+  captionXS: css`
+    font-size: 10px;
+    line-height: 150%;
+    font-weight: 500;
+  `
+};
+
 export const theme = {
   color: {
     white: '#ffffff',
@@ -15,85 +98,88 @@ export const theme = {
     gray900: '#2e2e2e'
   },
   typography: {
-    title2XL: css`
-      font-size: 40px;
-      line-height: 135%;
-      font-weight: 700;
+    title1: css`
+      ${typography.titleXL}
+      @media (min-width: 640px) {
+        ${typography.title2XL}
+      }
     `,
-    titleXL: css`
-      font-size: 24px;
-      line-height: 135%;
-      font-weight: 700;
+
+    title2: css`
+      ${typography.titleL}
+      @media (min-width: 640px) {
+        ${typography.titleXL}
+      }
     `,
-    titleL: css`
-      font-size: 20px;
-      line-height: 135%;
-      font-weight: 700;
+
+    title3: css`
+      ${typography.titleM}
+      @media (min-width: 640px) {
+        ${typography.titleL}
+      }
     `,
-    titleM: css`
-      font-size: 16px;
-      line-height: 135%;
-      font-weight: 700;
+
+    title4: css`
+      ${typography.titleS}
+      @media (min-width: 640px) {
+        ${typography.titleM}
+      }
     `,
-    titleS: css`
-      font-size: 12px;
-      line-height: 135%;
-      font-weight: 700;
+
+    body1: css`
+      ${typography.bodyL}
+      @media (min-width: 640px) {
+        ${typography.bodyXL}
+      }
     `,
-    bodyXL: css`
-      font-size: 24px;
-      line-height: 150%;
-      font-weight: 500;
+
+    body2: css`
+      ${typography.bodyM}
+      @media (min-width: 640px) {
+        ${typography.bodyL}
+      }
     `,
-    bodyL: css`
-      font-size: 20px;
-      line-height: 150%;
-      font-weight: 500;
+
+    body3: css`
+      ${typography.bodyS}
+      @media (min-width: 640px) {
+        ${typography.bodyM}
+      }
     `,
-    bodyM: css`
-      font-size: 16px;
-      line-height: 150%;
-      font-weight: 500;
+
+    label1: css`
+      ${typography.labelM}
+      @media (min-width: 640px) {
+        ${typography.labelL}
+      }
     `,
-    bodyS: css`
-      font-size: 12px;
-      line-height: 150%;
-      font-weight: 500;
+
+    label2: css`
+      ${typography.labelS}
+      @media (min-width: 640px) {
+        ${typography.labelM}
+      }
     `,
-    labelL: css`
-      font-size: 20px;
-      line-height: 150%;
-      font-weight: 700;
+
+    label3: css`
+      ${typography.labelXS}
+      @media (min-width: 640px) {
+        ${typography.labelS}
+      }
     `,
-    labelM: css`
-      font-size: 16px;
-      line-height: 150%;
-      font-weight: 700;
+
+    caption1: css`
+      ${typography.captionS}
+      @media (min-width: 640px) {
+        ${typography.captionM}
+      }
     `,
-    labelS: css`
-      font-size: 12px;
-      line-height: 150%;
-      font-weight: 700;
-    `,
-    labelXS: css`
-      font-size: 10px;
-      line-height: 150%;
-      font-weight: 700;
-    `,
-    captionM: css`
-      font-size: 16px;
-      line-height: 150%;
-      font-weight: 500;
-    `,
-    captionS: css`
-      font-size: 12px;
-      line-height: 150%;
-      font-weight: 500;
-    `,
-    captionXS: css`
-      font-size: 10px;
-      line-height: 150%;
-      font-weight: 500;
+
+    caption2: css`
+      ${typography.captionXS}
+      @media (min-width: 640px) {
+        ${typography.captionS}
+      }
     `
   }
 };

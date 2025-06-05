@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   ${({ theme }) => css`
-    ${theme.typography.titleL};
+    ${theme.typography.title3};
     border-bottom: 2px solid ${theme.color.gray900};
     padding: 4px;
   `}

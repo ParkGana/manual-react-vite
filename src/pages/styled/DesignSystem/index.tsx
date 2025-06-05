@@ -27,28 +27,24 @@ const StyledDesignSystemPage = () => {
       <Container>
         <Title>TYPOGRAPHY</Title>
         <TypographyContainer>
-          <Typography $text="title2XL">Title/2XL</Typography>
-          <Typography $text="titleXL">Title/XL</Typography>
-          <Typography $text="titleL">Title/L</Typography>
-          <Typography $text="titleM">Title/M</Typography>
-          <Typography $text="titleS">Title/S</Typography>
+          <Typography $text="title1">Title1</Typography>
+          <Typography $text="title2">Title2</Typography>
+          <Typography $text="title3">Title3</Typography>
+          <Typography $text="title4">Title4</Typography>
         </TypographyContainer>
         <TypographyContainer>
-          <Typography $text="bodyXL">Body/XL</Typography>
-          <Typography $text="bodyL">Body/L</Typography>
-          <Typography $text="bodyM">Body/M</Typography>
-          <Typography $text="bodyS">Body/S</Typography>
+          <Typography $text="body1">Body1</Typography>
+          <Typography $text="body2">Body2</Typography>
+          <Typography $text="body3">Body3</Typography>
         </TypographyContainer>
         <TypographyContainer>
-          <Typography $text="labelL">Label/L</Typography>
-          <Typography $text="labelM">Label/M</Typography>
-          <Typography $text="labelS">Label/S</Typography>
-          <Typography $text="labelXS">Label/XS</Typography>
+          <Typography $text="label1">Label1</Typography>
+          <Typography $text="label2">Label2</Typography>
+          <Typography $text="label3">Label3</Typography>
         </TypographyContainer>
         <TypographyContainer>
-          <Typography $text="captionM">Caption/M</Typography>
-          <Typography $text="captionS">Caption/S</Typography>
-          <Typography $text="captionXS">Caption/XS</Typography>
+          <Typography $text="caption1">Caption1</Typography>
+          <Typography $text="caption2">Caption2</Typography>
         </TypographyContainer>
       </Container>
     </Wrap>
