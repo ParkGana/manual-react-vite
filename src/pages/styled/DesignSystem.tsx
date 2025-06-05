@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import type { theme } from '../../styles/theme';
+import type { defaultTheme } from '../../styles/theme';
 
 const Wrap = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const Container = styled.div`
 const Title = styled.p`
   ${({ theme }) => css`
     ${theme.typography.title3};
-    border-bottom: 2px solid ${theme.color.gray900};
+    border-bottom: 2px solid ${theme.color.black};
     padding: 4px;
   `}
 `;
@@ -27,7 +27,7 @@ const ColorContainer = styled.div`
   display: flex;
 `;
 
-const Color = styled.div<{ $color: keyof typeof theme.color }>`
+const Color = styled.div<{ $color: keyof typeof defaultTheme.color }>`
   ${({ theme, $color }) => `
     width: 40px;
     height: 40px;
@@ -37,7 +37,7 @@ const Color = styled.div<{ $color: keyof typeof theme.color }>`
 
 const TypographyContainer = styled.div``;
 
-const Typography = styled.p<{ $text: keyof typeof theme.typography }>`
+const Typography = styled.p<{ $text: keyof typeof defaultTheme.typography }>`
   ${({ theme, $text }) => css`
     ${theme.typography[$text]};
   `}
