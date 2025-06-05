@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createTodoAPI, deleteTodoAPI, fetchTodosAPI, updateTodoAPI } from '../../api/Todo';
+import type { TodoType } from '../../types/todoType';
 
 export const useTodo = () => {
   const queryClient = useQueryClient();
@@ -13,7 +14,22 @@ export const useTodo = () => {
   /* Todo 생성 */
   const createTodoMutation = useMutation({
     mutationFn: createTodoAPI,
-    onSuccess: () => {
+    onMutate: async (title: string) => {
+      await queryClient.cancelQueries({ queryKey: ['todos'] });
+
+      const prevTodos = queryClient.getQueryData(['todos']);
+
+      queryClient.setQueryData<TodoType[]>(['todos'], (prev = []) => [
+        ...prev,
+        { id: crypto.randomUUID(), title, completed: false }
+      ]);
+
+      return { prevTodos };
+    },
+    onError: (_err, _variables, context) => {
+      context && queryClient.setQueryData(['todos'], context.prevTodos);
+    },
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     }
   });
@@ -21,7 +37,21 @@ export const useTodo = () => {
   /* Todo 수정 */
   const updateTodoMutation = useMutation({
     mutationFn: updateTodoAPI,
-    onSuccess: () => {
+    onMutate: async ({ id, title, completed }) => {
+      await queryClient.cancelQueries({ queryKey: ['todos'] });
+
+      const prevTodos = queryClient.getQueryData(['todos']);
+
+      queryClient.setQueryData<TodoType[]>(['todos'], (prev = []) =>
+        prev.map((todo) => (todo.id === id ? { ...todo, title, completed } : todo))
+      );
+
+      return { prevTodos };
+    },
+    onError: (_err, _variables, context) => {
+      context && queryClient.setQueryData(['todos'], context.prevTodos);
+    },
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     }
   });
@@ -29,7 +59,19 @@ export const useTodo = () => {
   /* Todo 삭제 */
   const deleteTodoMutation = useMutation({
     mutationFn: deleteTodoAPI,
-    onSuccess: () => {
+    onMutate: async (id) => {
+      await queryClient.cancelQueries({ queryKey: ['todos'] });
+
+      const prevTodos = queryClient.getQueryData(['todos']);
+
+      queryClient.setQueryData<TodoType[]>(['todos'], (prev = []) => prev.filter((todo) => todo.id !== id));
+
+      return { prevTodos };
+    },
+    onError: (_err, _variables, context) => {
+      context && queryClient.setQueryData(['todos'], context.prevTodos);
+    },
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     }
   });
