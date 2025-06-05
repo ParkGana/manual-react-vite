@@ -2,10 +2,11 @@ import { BrowserRouter } from 'react-router-dom';
 import Router from './router';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, defaultTheme } from './styles/theme';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useThemeStore } from './stores/themeStore';
 
 const App = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const { theme, toggleTheme } = useThemeStore();
 
   useEffect(() => {
     theme === 'light'
@@ -15,7 +16,7 @@ const App = () => {
 
   /* 테마 변경 */
   const handleToggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    toggleTheme();
     document.documentElement.classList.toggle('dark');
   };
 
