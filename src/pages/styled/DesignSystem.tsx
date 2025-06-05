@@ -1,4 +1,47 @@
-import { Color, ColorContainer, Container, Title, Typography, TypographyContainer, Wrap } from './style';
+import styled, { css } from 'styled-components';
+import type { theme } from '../../styles/theme';
+
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+`;
+
+const Title = styled.p`
+  ${({ theme }) => css`
+    ${theme.typography.title3};
+    border-bottom: 2px solid ${theme.color.gray900};
+    padding: 4px;
+  `}
+`;
+
+const ColorContainer = styled.div`
+  display: flex;
+`;
+
+const Color = styled.div<{ $color: keyof typeof theme.color }>`
+  ${({ theme, $color }) => `
+    width: 40px;
+    height: 40px;
+    background-color: ${theme.color[$color]};
+  `}
+`;
+
+const TypographyContainer = styled.div``;
+
+const Typography = styled.p<{ $text: keyof typeof theme.typography }>`
+  ${({ theme, $text }) => css`
+    ${theme.typography[$text]};
+  `}
+`;
 
 const StyledDesignSystemPage = () => {
   return (
