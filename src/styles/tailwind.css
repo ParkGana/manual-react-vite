@@ -15,3 +15,167 @@
   --gray-800: #474747;
   --gray-900: #2e2e2e;
 }
+
+@layer components {
+  .title-2xl {
+    @apply text-[40px] leading-[135%] font-bold;
+  }
+  .title-xl {
+    @apply text-[24px] leading-[135%] font-bold;
+  }
+  .title-l {
+    @apply text-[20px] leading-[135%] font-bold;
+  }
+  .title-m {
+    @apply text-[16px] leading-[135%] font-bold;
+  }
+  .title-s {
+    @apply text-[12px] leading-[135%] font-bold;
+  }
+
+  .body-xl {
+    @apply text-[24px] leading-[150%] font-medium;
+  }
+  .body-l {
+    @apply text-[20px] leading-[150%] font-medium;
+  }
+  .body-m {
+    @apply text-[16px] leading-[150%] font-medium;
+  }
+  .body-s {
+    @apply text-[12px] leading-[150%] font-medium;
+  }
+
+  .label-l {
+    @apply text-[20px] leading-[150%] font-bold;
+  }
+  .label-m {
+    @apply text-[16px] leading-[150%] font-bold;
+  }
+  .label-s {
+    @apply text-[12px] leading-[150%] font-bold;
+  }
+  .label-xs {
+    @apply text-[10px] leading-[150%] font-bold;
+  }
+
+  .caption-m {
+    @apply text-[16px] leading-[150%] font-medium;
+  }
+  .caption-s {
+    @apply text-[12px] leading-[150%] font-medium;
+  }
+  .caption-xs {
+    @apply text-[10px] leading-[150%] font-medium;
+  }
+}
+
+@layer components {
+  .text-title1 {
+    @apply title-xl;
+  }
+  @screen sm {
+    .text-title1 {
+      @apply title-2xl;
+    }
+  }
+
+  .text-title2 {
+    @apply title-l;
+  }
+  @screen sm {
+    .text-title2 {
+      @apply title-xl;
+    }
+  }
+
+  .text-title3 {
+    @apply title-m;
+  }
+  @screen sm {
+    .text-title3 {
+      @apply title-l;
+    }
+  }
+
+  .text-title4 {
+    @apply title-s;
+  }
+  @screen sm {
+    .text-title4 {
+      @apply title-m;
+    }
+  }
+
+  .text-body1 {
+    @apply body-l;
+  }
+  @screen sm {
+    .text-body1 {
+      @apply body-xl;
+    }
+  }
+
+  .text-body2 {
+    @apply body-m;
+  }
+  @screen sm {
+    .text-body2 {
+      @apply body-l;
+    }
+  }
+
+  .text-body3 {
+    @apply body-s;
+  }
+  @screen sm {
+    .text-body3 {
+      @apply body-m;
+    }
+  }
+
+  .text-label1 {
+    @apply label-m;
+  }
+  @screen sm {
+    .text-label1 {
+      @apply label-l;
+    }
+  }
+
+  .text-label2 {
+    @apply label-s;
+  }
+  @screen sm {
+    .text-label2 {
+      @apply label-m;
+    }
+  }
+
+  .text-label3 {
+    @apply label-xs;
+  }
+  @screen sm {
+    .text-label3 {
+      @apply label-s;
+    }
+  }
+
+  .text-caption1 {
+    @apply caption-s;
+  }
+  @screen sm {
+    .text-caption1 {
+      @apply caption-m;
+    }
+  }
+
+  .text-caption2 {
+    @apply caption-xs;
+  }
+  @screen sm {
+    .text-caption2 {
+      @apply caption-s;
+    }
+  }
+}
