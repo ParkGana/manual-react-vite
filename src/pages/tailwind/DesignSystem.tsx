@@ -3,7 +3,7 @@ const TailwindDesignSystemPage = () => {
     <div className="flex flex-col gap-10 p-5">
       {/* COLOR */}
       <div className="flex flex-col gap-4 p-4">
-        <p className="text-title3 border-b-2 border-gray-900 p-1">COLOR</p>
+        <p className="text-title3 border-b-2 border-black p-1">COLOR</p>
         <div className="flex">
           <div className="w-10 h-10 bg-white" />
           <div className="w-10 h-10 bg-black" />
@@ -23,7 +23,7 @@ const TailwindDesignSystemPage = () => {
 
       {/* TYPOGRAPHY */}
       <div className="flex flex-col gap-4 p-4">
-        <p className="text-title3 border-b-2 border-gray-900 p-1">TYPOGRAPHY</p>
+        <p className="text-title3 border-b-2 border-black p-1">TYPOGRAPHY</p>
         <div>
           <p className="text-title1">Title1</p>
           <p className="text-title2">Title2</p>
