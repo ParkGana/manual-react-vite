@@ -3,8 +3,8 @@ import { FaPenToSquare } from 'react-icons/fa6';
 import { FaCheck } from 'react-icons/fa6';
 import type { TodoType } from '../../../types/todoType';
 import clsx from 'clsx';
-import { deleteTodoAPI, updateTodoAPI } from '../../../api/Todo';
 import { useState } from 'react';
+import { useTodo } from '../../../hooks/tanstack/useTodo';
 
 type TodoItemProps = {
   data: TodoType;
@@ -14,6 +14,8 @@ type TodoItemProps = {
 };
 
 const TodoItem = ({ data, isLast, isUpdated, handleChangeUpdatedItem }: TodoItemProps) => {
+  const { updateTodoMutation, deleteTodoMutation } = useTodo();
+
   const [updatedTitle, setUpdatedTitle] = useState<string>(data.title);
 
   /* 수정할 할 일 변경 */
@@ -23,14 +25,14 @@ const TodoItem = ({ data, isLast, isUpdated, handleChangeUpdatedItem }: TodoItem
   };
 
   /* Todo 수정 */
-  const handleUpdateTodo = async (updatedData: TodoType) => {
-    await updateTodoAPI(updatedData);
+  const handleUpdateTodo = (updatedData: TodoType) => {
+    updateTodoMutation.mutate(updatedData);
     data.title !== updatedData.title && handleChangeUpdatedItem(null);
   };
 
   /* Todo 삭제 */
-  const handleDeleteTodo = async () => {
-    await deleteTodoAPI(data.id);
+  const handleDeleteTodo = () => {
+    deleteTodoMutation.mutate(data.id);
   };
 
   return (

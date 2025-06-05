@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { useState, type ChangeEvent, type KeyboardEvent } from 'react';
-import { createTodoAPI } from '../../../api/Todo';
+import { useTodo } from '../../../hooks/tanstack/useTodo';
 
 const TodoCreate = () => {
+  const { createTodoMutation } = useTodo();
+
   const [title, setTitle] = useState('');
 
   /* 입력 값 변경 */
@@ -11,9 +13,9 @@ const TodoCreate = () => {
   };
 
   /* Todo 생성 */
-  const handleCreateTodo = async (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleCreateTodo = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      await createTodoAPI(title);
+      createTodoMutation.mutate(title);
       setTitle('');
     }
   };

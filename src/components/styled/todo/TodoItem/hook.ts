@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent } from 'react';
 import type { TodoType } from '../../../../types/todoType';
-import { deleteTodoAPI, updateTodoAPI } from '../../../../api/Todo';
+import { useTodo } from '../../../../hooks/tanstack/useTodo';
 
 type UseTodoItemProps = {
   data: TodoType;
@@ -8,6 +8,8 @@ type UseTodoItemProps = {
 };
 
 export const useTodoItem = ({ data, handleChangeUpdatedItem }: UseTodoItemProps) => {
+  const { updateTodoMutation, deleteTodoMutation } = useTodo();
+
   const [updatedTitle, setUpdatedTitle] = useState<string>(data.title);
 
   /* 입력 값 변경 */
@@ -22,14 +24,14 @@ export const useTodoItem = ({ data, handleChangeUpdatedItem }: UseTodoItemProps)
   };
 
   /* Todo 수정 */
-  const handleUpdateTodo = async (updatedData: TodoType) => {
-    await updateTodoAPI(updatedData);
+  const handleUpdateTodo = (updatedData: TodoType) => {
+    updateTodoMutation.mutate(updatedData);
     data.title !== updatedData.title && handleChangeUpdatedItem(null);
   };
 
   /* Todo 삭제 */
-  const handleDeleteTodo = async () => {
-    await deleteTodoAPI(data.id);
+  const handleDeleteTodo = () => {
+    deleteTodoMutation.mutate(data.id);
   };
 
   return {
