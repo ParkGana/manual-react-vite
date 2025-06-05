@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react';
-import { fetchTodosAPI } from '../../../api/Todo';
-import type { TodoType } from '../../../types/todoType';
+import { useState } from 'react';
 import TodoItem from './TodoItem';
+import { useTodo } from '../../../hooks/tanstack/useTodo';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState<TodoType[]>([]);
-  const [updatedItem, setUpdatedItem] = useState<string | null>(null);
+  const {
+    fetchTodosQuery: { data: todos, isPending, isError }
+  } = useTodo();
 
-  /* Todo 목록 가져오기 */
-  useEffect(() => {
-    const fetchTodos = async () => {
-      setTodos(await fetchTodosAPI());
-    };
-    fetchTodos();
-  }, []);
+  const [updatedItem, setUpdatedItem] = useState<string | null>(null);
 
   /* 수정할 할 일 변경 */
   const handleChangeUpdatedItem = (id: string | null) => {
     setUpdatedItem(id);
   };
+
+  if (isPending) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
 
   return (
     <div className="w-full flex flex-col">

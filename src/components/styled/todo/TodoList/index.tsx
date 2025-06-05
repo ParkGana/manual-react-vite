@@ -1,9 +1,17 @@
+import { useTodo } from '../../../../hooks/tanstack/useTodo';
 import TodoItem from '../TodoItem';
 import { useTodoList } from './hook';
 import { Container, Message } from './style';
 
 const TodoList = () => {
-  const { todos, updatedItem, handleChangeUpdatedItem } = useTodoList();
+  const {
+    fetchTodosQuery: { data: todos, isPending, isError }
+  } = useTodo();
+
+  const { updatedItem, handleChangeUpdatedItem } = useTodoList();
+
+  if (isPending) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
 
   return (
     <Container>
